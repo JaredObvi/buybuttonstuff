@@ -1,0 +1,351 @@
+<div class="yotpo bottomLine" data-product-id="1966398275633" style="display:inline-block; display: flex; justify-content: center; margin-top: 10px;"> </div>
+<script src="https://js.afterpay.com/afterpay-1.x.js" data-analytics-enabled
+        async
+></script>
+<div id='product-component-1642607087512' style="margin: 0 auto;"></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: 'myobvi.com',
+      storefrontAccessToken: '3d16f8dd6fe2cad41f1450ec709ebce1',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('product', {
+        id: '6661862752517',
+        node: document.getElementById('product-component-1642607087512'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+      "iframe": "false",
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px"
+        }
+      },
+      "title": {
+        "font-family": "Raleway, sans-serif",
+        "color": "#fd4998"
+      },
+      "button": {
+        "font-family": "Raleway, sans-serif",
+        "font-size": "18px",
+        "padding-top": "17px",
+        "padding-bottom": "17px",
+        "font-weight": "bold",
+        ":hover": {
+          "background-color": "#5bcb5c"
+        },
+        "background-color": "#65e266",
+        ":focus": {
+          "background-color": "#5bcb5c"
+        },
+        "border-radius": "5px",
+        "padding-left": "80px",
+        "padding-right": "80px"
+      },
+      "quantityInput": {
+        "font-size": "18px",
+        "padding-top": "17px",
+        "padding-bottom": "17px"
+      },
+      "prices": {
+        "display": "inline",
+        "margin-right": "5px"
+      },
+      "options": {
+        "margin-top": "20px"
+      },
+      "price": {
+        "font-family": "Raleway, sans-serif",
+        "font-weight": "bold",
+        "display": "inline",
+        "text-decoration": "line-through",
+        "color": "rgba(56, 39, 87, 1)",
+        "font-size": "16px"
+      },
+      "compareAt": {
+        "font-family": "Raleway, sans-serif",
+        "font-weight": "bold",
+        "display": "none"
+      },
+      "unitPrice": {
+        "font-family": "Roboto, sans-serif",
+        "font-weight": "bold"
+      }
+    },
+    "text": {
+      "button": "BUY NOW"
+    },
+    "googleFonts": [
+      "Roboto",
+      "Raleway"
+    ],
+    "buttonDestination": function(that) {
+
+            // loading code
+
+            // Ash, if you are ever editing this code, know that the
+            // variable "main" id below needs to match the product id inside the div
+            // all the way at the top of this code (not yotpo, the buybutton component).
+
+            const main = document.getElementById('product-component-1642607087512')
+            const loadingBox = document.createElement('div')
+            const loadingGif = document.createElement('i')
+            const loadingText = document.createElement('p')
+
+            loadingGif.classList = "fas fa-spinner fa-spin"
+            loadingGif.style.fontSize="34px"
+            loadingGif.style.color = "#382757"
+
+            loadingBox.style.width = "100%"
+            loadingBox.style.height = "100%"
+            loadingBox.style.transition="1s"
+            loadingBox.style.opacity = 0
+            loadingBox.style.display = "flex"
+            loadingBox.style.flexDirection ="column"
+            loadingBox.style.justifyContent = "center"
+            loadingBox.style.alignItems="center"
+            loadingBox.style.position="absolute"
+            loadingBox.style.top="0"
+            loadingBox.style.left="0"
+            loadingBox.style.backgroundColor="rgb(253, 241, 245, .85)"
+            loadingBox.style.color = " #FDF1F5"
+           
+            loadingText.style.fontFamily = "Raleway"
+            loadingText.style.fontSize = "24px"
+            loadingText.style.color = "#382757"
+            loadingText.style.fontWeight = "bold"
+            loadingText.innerHTML = "Applying Your Discount..."
+           
+            loadingBox.appendChild(loadingGif)
+            loadingBox.appendChild(loadingText)
+            main.appendChild(loadingBox)
+
+            setTimeout(() => {
+                loadingBox.style.opacity = 1
+            }, 500)
+
+            //   checkout redirect code
+              // based on onButtonClick => buttonDestination === 'checkout'
+              // https://github.com/Shopify/buy-button-js/blob/master/src/components/product.js#L647
+              that._userEvent('openCheckout');
+              that.props.tracker.track('Direct Checkout', {});
+              let checkoutWindow;
+              if (that.config.cart.popup) {
+                checkoutWindow = window.open('', 'checkout');
+              } else {
+                checkoutWindow = window;
+              }
+              const input = {
+                lineItems: [
+                  {
+                    variantId: that.selectedVariant.id,
+                    quantity: that.selectedQuantity,
+                  },
+                  {
+                    variantId:"Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zOTU0MTAzNTI3MDQwNQ==",
+                    quantity: 1,
+                  },
+                ],
+              };
+
+              that.props.client.checkout.create(input).then((checkout) => {
+                let suffix = '&';
+                if (checkout.webUrl.indexOf('?') === -1) suffix = '?';
+                const checkoutUrl = `${checkout.webUrl}${suffix}discount=NEWYEAR20`;
+                checkoutWindow.location = checkoutUrl;
+              })
+            },
+    "contents": {
+      "slashPrice": true,
+      "yotpo": true,
+      "afterpay": true
+    },
+    "templates": {
+        "yotpo": `<div class="yotpo bottomLine" data-product-id="1966398275633" style="display:inline-block; display: flex; justify-content: center;">
+</div>`,
+        "slashPrice": '<P style="display: inline; font-size: 18px; color:#f64899; font-weight: bold; margin-left: 5px; font-family:Raleway, sans-serif;"> 59.99 </P>',
+        "afterpay": '<afterpay-placement data-locale="en_US" data-currency="USD" data-amount="60.00"></afterpay-placement>'
+    },
+    "order": [
+        'img',
+        'yotpo',
+        'price',
+        'slashPrice',
+        'afterpay',
+        'options',
+        'button'
+    ]
+  },
+  "productSet": {
+    "iframe": false,
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  },
+  "modal": {
+      "iframe": false
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        "font-family": "Raleway, sans-serif",
+        "font-size": "18px",
+        "padding-top": "17px",
+        "padding-bottom": "17px",
+        ":hover": {
+          "background-color": "#5bcb5c"
+        },
+        "background-color": "#65e266",
+        ":focus": {
+          "background-color": "#5bcb5c"
+        },
+        "border-radius": "5px",
+        "padding-left": "100px",
+        "padding-right": "100px"
+      },
+      "quantityInput": {
+        "font-size": "18px",
+        "padding-top": "17px",
+        "padding-bottom": "17px"
+      },
+      "title": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "bold",
+        "font-size": "26px",
+        "color": "#4c4c4c"
+      },
+      "price": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "18px",
+        "color": "#4c4c4c",
+        "display": "inline"
+      },
+      "compareAt": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "15.299999999999999px",
+        "color": "#4c4c4c",
+      },
+      "unitPrice": {
+        "font-family": "Helvetica Neue, sans-serif",
+        "font-weight": "normal",
+        "font-size": "15.299999999999999px",
+        "color": "#4c4c4c"
+      }
+    },
+    "googleFonts": [
+      "Raleway"
+    ],
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "option": {
+    "styles": {
+      "label": {
+        "font-family": "Raleway, sans-serif",
+        "font-size": "17px"
+      },
+      "select": {
+        "font-family": "Raleway, sans-serif"
+      }
+    },
+    "googleFonts": [
+      "Raleway"
+    ]
+  },
+  "cart": {
+    "iframe": false,
+    "styles": {
+      "button": {
+        "font-family": "Raleway, sans-serif",
+        "font-size": "18px",
+        "padding-top": "17px",
+        "padding-bottom": "17px",
+        ":hover": {
+          "background-color": "#5bcb5c"
+        },
+        "background-color": "#65e266",
+        ":focus": {
+          "background-color": "#5bcb5c"
+        },
+        "border-radius": "5px"
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    },
+    "popup": false,
+    "googleFonts": [
+      "Raleway"
+    ]
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "font-family": "Raleway, sans-serif",
+        "background-color": "#65e266",
+        ":hover": {
+          "background-color": "#5bcb5c"
+        },
+        ":focus": {
+          "background-color": "#5bcb5c"
+        }
+      },
+      "count": {
+        "font-size": "18px"
+      }
+    },
+    "googleFonts": [
+      "Raleway"
+    ]
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
